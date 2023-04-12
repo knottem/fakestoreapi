@@ -21,7 +21,7 @@ class FakestoreapiApplicationTests {
     @Test
     void getAllProducts() {
         FakeStoreDao dao = new FakeStoreDao();
-        List<Product> products = dao.getAllProducts();
+        List<Product> products = dao.getAllProductsWithLinks();
 
         Optional<Product> product1 = products.stream().filter(p -> p.getId() == 1).findFirst();
         assertTrue(product1.isPresent());
