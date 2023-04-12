@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
@@ -16,12 +17,17 @@ public class FakeStoreController {
 
     FakeStoreDao dao = new FakeStoreDao();
 
-    @GetMapping("/products")
+    @RequestMapping("/")
+    public String index() {
+        return "Welcome to the Fake Store API";
+    }
+
+    @RequestMapping({ "/products", "/products/"})
     public List<Product> getAllProducts() {
         return dao.getAllProducts();
     }
 
-    @GetMapping("/products/{id}")
+    @RequestMapping("/products/{id}")
     public ResponseEntity<Object> getProductById(@PathVariable(required = false) int id) {
         Product product = dao.getAllProducts().stream().filter(p -> p.getId() == id).findFirst().orElse(null);
         if (product == null) {
@@ -31,7 +37,7 @@ public class FakeStoreController {
         }
     }
 
-    @GetMapping("/products/category/{category}")
+    @RequestMapping("/products/category/{category}")
     public ResponseEntity<Object> getProductsByCategory(@PathVariable(required = false) String category) {
         List<Product> products = dao.getAllProducts().stream().filter(p -> p.getCategory().equals(category)).toList();
         if (products.isEmpty()) {
