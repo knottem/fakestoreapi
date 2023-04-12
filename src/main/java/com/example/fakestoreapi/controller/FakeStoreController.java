@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,11 +17,6 @@ import java.util.List;
 public class FakeStoreController {
 
     FakeStoreDao dao = new FakeStoreDao();
-
-    @RequestMapping("/")
-    public String index() {
-        return "Welcome to the Fake Store API";
-    }
 
     @RequestMapping({ "/products", "/products/"})
     public List<Product> getAllProducts() {

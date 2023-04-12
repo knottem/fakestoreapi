@@ -32,3 +32,10 @@ to find the process id of the server and then type:
 ```bash
 taskkill -f /PID <process id>
 ```
+
+## Test the server
+
+You can test the server with [Postman](https://www.postman.com/).
+
+or you can just open the url in your browser, it will return a json file.
+
