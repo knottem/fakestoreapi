@@ -10,7 +10,7 @@ You need to have java installed on your computer.
 Then you can run the server with the following command:
 
 ```bash
-java -jar fakestoreapi-0.0.1.jar
+java -jar fakestoreapi-0.0.2.jar
 ```
 the server will run on port 3000.
 
