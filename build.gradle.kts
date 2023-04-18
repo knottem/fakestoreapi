@@ -26,6 +26,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
     implementation("org.springframework.hateoas:spring-hateoas:2.0.3")
+    implementation("org.springframework.boot:spring-boot-starter-security:3.0.5")
+
 }
 
 tasks.withType<Test> {

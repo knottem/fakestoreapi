@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+
 @RestController
 public class FakeStoreController {
 
     FakeStoreDao dao = new FakeStoreDao();
-    List<Product> products = dao.getAllProductsWithLinks();
+    List<Product> products = dao.getAllProducts();
 
     @RequestMapping({ "/products", "/products/"})
     public List<Product> getAllProducts() {
@@ -44,7 +45,7 @@ public class FakeStoreController {
     }
 
     @RequestMapping("/products/{id}/delete")
-    public ResponseEntity<Object> deleteProductById(@PathVariable(required = false) int id) {
+    public ResponseEntity<Object> deleteProductById(@PathVariable int id) {
         Product product = products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
         if (product == null) {
             return new ResponseEntity<>(Collections.singletonMap("error", "Product not found"), HttpStatus.NOT_FOUND);
